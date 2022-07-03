@@ -241,6 +241,7 @@ public class InfoCenter {
         try {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(savedGamesFile));
             oos.writeObject(gamesSaved);
+            oos.flush();
             oos.close();
         } catch (Exception e) {
             System.out.println(e);
@@ -253,7 +254,7 @@ public class InfoCenter {
         try {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(savedGamesFile));
             Object readArray = ois.readObject();
-            if (readArray instanceof HashMap) {
+            if (readArray instanceof ArrayDeque) {
                 ArrayDeque<Game> array = new ArrayDeque<>((ArrayDeque) readArray);
                 Game gameToLoad = array.getFirst();
                 nameX = gameToLoad.playerXName;
@@ -392,7 +393,7 @@ public class InfoCenter {
     }
 }
 
-class Game {
+class Game implements Serializable {
     String playerXName;
     String playerOName;
     int scorePlayerX;

@@ -80,9 +80,9 @@ public class TicTacToe extends Application {
                 infoCenter.loadGame();
                 infoCenter.updateMessage(infoCenter.getNameX().concat("'s turn"));
                 infoCenter.updatePlayersLabel(infoCenter.getNameX(), infoCenter.getNameO());
-                infoCenter.showUserNameFields();
                 infoCenter.updateRoundNumber();
                 infoCenter.showRound();
+                infoCenter.hideStartButton();
                 tileBoard.startNewGame();
             }
         };

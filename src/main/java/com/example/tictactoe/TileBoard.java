@@ -590,15 +590,16 @@ public class TileBoard {
         } else if (infoCenter.getNameO().equals(winner)) {
             infoCenter.setScorePlayerO(infoCenter.getScorePlayerO() + 1);
         }
+        infoCenter.saveGame();
         infoCenter.updatePlayersLabel(infoCenter.getNameX(), infoCenter.getNameO());
     }
 
     private void endRound() {
         infoCenter.updateMessage("Stalemate...");
-        infoCenter.saveGame();
         infoCenter.showNextRoundButton();
         infoCenter.setRound(infoCenter.getRound() + 1);
         infoCenter.updateRoundNumber();
+        infoCenter.saveGame();
 
     }
 
